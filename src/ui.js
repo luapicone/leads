@@ -82,9 +82,9 @@ function renderHero(root) {
 
   hero.innerHTML = `
     <div class="hero-copy">
-      <span class="eyebrow">Altum.AI Leads</span>
-      <h1>Dashboard web para revisar leads cargados desde Google Sheets.</h1>
-      <p>La hoja sigue siendo la fuente de datos. La web la convierte en un panel usable para buscar, filtrar, priorizar y revisar oportunidades sin tocar el spreadsheet.</p>
+      <span class="eyebrow">Altum.AI</span>
+      <h1>Gestor Leads</h1>
+      <p>Un panel operativo para revisar oportunidades, ordenar la prospección y detectar rápido qué leads merecen atención inmediata sin perder tiempo en la hoja.</p>
     </div>
     <div class="hero-stats">
       <div class="stat-card"><strong>${summary.total}</strong><span>leads visibles</span></div>
@@ -322,7 +322,7 @@ function renderStatusBar(root) {
       <strong>Estados</strong>
       <div class="status-chip-row">${chips || '<span class="status-chip">Sin datos</span>'}</div>
     </div>
-    <p>Fuente esperada: Google Sheets publicado como CSV.</p>
+    <p>Fuente activa: Google Sheets publicado como CSV.</p>
   `
   root.append(bar)
 }

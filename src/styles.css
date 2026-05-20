@@ -1,20 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap");
+
 :root {
-  color-scheme: dark;
-  --bg: #07111d;
-  --panel: rgba(12, 22, 34, 0.88);
-  --panel-strong: #0f1a29;
-  --line: rgba(255, 255, 255, 0.09);
-  --line-strong: rgba(255, 255, 255, 0.15);
-  --text: #edf3fb;
-  --muted: #95a7bf;
-  --accent: #7bc8ff;
-  --accent-strong: #4ba7ee;
-  --accent-soft: rgba(123, 200, 255, 0.14);
-  --gold: #f1c97a;
-  --success: #8fe4b2;
-  --danger: #ff9f8f;
-  --shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
-  font-family: "DM Sans", Inter, system-ui, sans-serif;
+  color-scheme: light;
+  --bg: #f3efe7;
+  --bg-soft: #ebe4d6;
+  --panel: rgba(255, 252, 246, 0.88);
+  --panel-strong: #fffaf1;
+  --panel-muted: #f0e7d9;
+  --line: rgba(33, 42, 40, 0.1);
+  --line-strong: rgba(33, 42, 40, 0.18);
+  --text: #17211f;
+  --muted: #5d6a66;
+  --accent: #1f6b5b;
+  --accent-strong: #124f43;
+  --accent-soft: rgba(31, 107, 91, 0.1);
+  --gold: #8d5d14;
+  --success: #1a6f48;
+  --danger: #b55341;
+  --shadow: 0 24px 60px rgba(58, 43, 17, 0.08);
+  font-family: "Manrope", "Segoe UI", sans-serif;
 }
 
 * {
@@ -26,9 +30,9 @@ body {
   min-height: 100vh;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(123, 200, 255, 0.16), transparent 28%),
-    radial-gradient(circle at right top, rgba(241, 201, 122, 0.14), transparent 24%),
-    linear-gradient(180deg, #06101a 0%, #0b1522 100%);
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 28%),
+    radial-gradient(circle at top right, rgba(31, 107, 91, 0.12), transparent 22%),
+    linear-gradient(180deg, #f8f4ec 0%, #efe6d8 100%);
 }
 
 button,
@@ -44,9 +48,9 @@ a {
 }
 
 .shell {
-  width: min(1460px, calc(100vw - 32px));
+  width: min(1480px, calc(100vw - 32px));
   margin: 0 auto;
-  padding: 28px 0 44px;
+  padding: 30px 0 44px;
 }
 
 .hero,
@@ -57,72 +61,107 @@ a {
 .empty-state {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 28px;
-  backdrop-filter: blur(16px);
+  border-radius: 30px;
+  backdrop-filter: blur(18px);
   box-shadow: var(--shadow);
 }
 
 .hero {
+  position: relative;
+  overflow: hidden;
   display: grid;
-  grid-template-columns: 1.45fr .95fr;
+  grid-template-columns: 1fr;
   gap: 22px;
-  padding: 28px;
+  padding: 30px;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -8% -24% auto;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(31, 107, 91, 0.16), rgba(31, 107, 91, 0));
+  pointer-events: none;
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 8px 13px;
   border-radius: 999px;
   letter-spacing: .08em;
   text-transform: uppercase;
   font-size: .75rem;
   font-weight: 700;
   background: var(--accent-soft);
-  color: #b8e4ff;
+  color: var(--accent-strong);
 }
 
 .hero-copy h1 {
-  margin: 18px 0 14px;
-  max-width: 12ch;
-  font-size: clamp(2.2rem, 4.5vw, 4.8rem);
-  line-height: .92;
+  margin: 16px 0 12px;
+  max-width: 10ch;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.8rem, 5vw, 5.3rem);
+  line-height: .95;
   letter-spacing: -.04em;
 }
 
 .hero-copy p {
   margin: 0;
-  max-width: 64ch;
+  max-width: 70ch;
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.75;
+  font-size: 1.04rem;
 }
 
 .hero-stats {
   display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
 
 .stat-card {
-  padding: 18px;
-  border-radius: 20px;
-  border: 1px solid var(--line);
-  background: var(--panel-strong);
+  position: relative;
+  min-height: 148px;
+  padding: 22px 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(31, 107, 91, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 250, 241, 0.98)),
+    var(--panel-strong);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stat-card::before {
+  content: "";
+  width: 42px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), #d0b177);
 }
 
 .stat-card strong {
   display: block;
-  font-size: 2.1rem;
+  margin-top: auto;
+  font-size: clamp(2.3rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: -.04em;
 }
 
 .stat-card span {
   display: block;
-  margin-top: 6px;
+  margin-top: 10px;
   color: var(--muted);
+  font-size: .92rem;
 }
 
 .filters {
   margin-top: 20px;
-  padding: 20px;
+  padding: 22px;
 }
 
 .filters-top,
@@ -150,6 +189,8 @@ a {
 .field span {
   font-size: .86rem;
   color: var(--muted);
+  font-weight: 700;
+  letter-spacing: .03em;
 }
 
 .field input,
@@ -157,17 +198,20 @@ a {
 .detail-block textarea {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(5, 11, 18, 0.72);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
   color: var(--text);
   padding: 14px 16px;
   outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
 }
 
 .field input:focus,
 .field select:focus,
 .detail-block textarea:focus {
   border-color: var(--accent-strong);
+  box-shadow: 0 0 0 4px rgba(31, 107, 91, 0.08);
+  background: #fffdfa;
 }
 
 .filter-actions {
@@ -185,19 +229,19 @@ a {
 }
 
 .primary-button {
-  background: linear-gradient(135deg, #8fd7ff, #5aaef1);
-  color: #06101a;
+  background: linear-gradient(135deg, #205d51, #2f7b69);
+  color: #f8f4ec;
 }
 
 .ghost-button {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.58);
   color: var(--text);
   border: 1px solid var(--line);
 }
 
 .status-bar {
   margin-top: 18px;
-  padding: 16px 20px;
+  padding: 18px 20px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -231,8 +275,9 @@ a {
 }
 
 .status-chip {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--muted);
+  background: rgba(31, 107, 91, 0.08);
+  color: var(--accent-strong);
+  border: 1px solid rgba(31, 107, 91, 0.1);
 }
 
 .content-grid {
@@ -260,7 +305,7 @@ table {
 thead th {
   position: sticky;
   top: 0;
-  background: rgba(9, 16, 25, 0.98);
+  background: rgba(255, 250, 241, 0.96);
   z-index: 1;
   text-align: left;
   font-size: .83rem;
@@ -278,15 +323,15 @@ td {
 
 tbody tr {
   cursor: pointer;
-  transition: background .12s ease;
+  transition: background .12s ease, transform .12s ease;
 }
 
 tbody tr:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(31, 107, 91, 0.05);
 }
 
 tbody tr.is-selected {
-  background: rgba(123, 200, 255, 0.1);
+  background: rgba(31, 107, 91, 0.09);
 }
 
 td strong {
@@ -299,24 +344,28 @@ td small {
 }
 
 .score-pill {
-  background: rgba(241, 201, 122, 0.14);
+  background: rgba(208, 177, 119, 0.16);
   color: var(--gold);
   font-weight: 700;
 }
 
 .status-pill {
-  background: rgba(143, 228, 178, 0.14);
+  background: rgba(26, 111, 72, 0.12);
   color: var(--success);
 }
 
 .detail-panel {
   padding: 22px;
   overflow: auto;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.96), rgba(249, 244, 235, 0.94)),
+    var(--panel);
 }
 
 .detail-head h2 {
   margin: 14px 0 8px;
-  font-size: 2rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 2.2rem;
   line-height: 1;
 }
 
@@ -337,7 +386,7 @@ td small {
   padding: 16px;
   border-radius: 18px;
   border: 1px solid var(--line);
-  background: rgba(8, 14, 21, 0.62);
+  background: rgba(255, 255, 255, 0.66);
 }
 
 .detail-field span,
@@ -386,17 +435,20 @@ td small {
 }
 
 .error-state {
-  border-color: rgba(255, 159, 143, 0.28);
+  border-color: rgba(181, 83, 65, 0.28);
 }
 
 @media (max-width: 1280px) {
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .filters-top {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 1024px) {
-  .hero,
   .content-grid,
   .filters-top,
   .filters-bottom,
@@ -408,6 +460,10 @@ td small {
 
   .status-bar {
     align-items: start;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .filter-actions {
@@ -431,6 +487,16 @@ td small {
   .status-bar,
   .detail-panel {
     padding: 18px;
+  }
+
+  .hero-copy h1 {
+    max-width: none;
+  }
+
+  .hero-stats,
+  .filters-top,
+  .detail-grid {
+    grid-template-columns: 1fr;
   }
 
   th,
