@@ -75,9 +75,9 @@ function renderHero(root) {
   const hero = el('section', 'hero')
   const summary = state.summary || {
     total: 0,
-    pendingReview: 0,
-    averageScore: 0,
-    withoutWebsite: 0
+    withPhone: 0,
+    withEmail: 0,
+    withWebsite: 0
   }
 
   hero.innerHTML = `
@@ -87,10 +87,10 @@ function renderHero(root) {
       <p>Un panel operativo para revisar oportunidades, ordenar la prospección y detectar rápido qué leads merecen atención inmediata sin perder tiempo en la hoja.</p>
     </div>
     <div class="hero-stats">
-      <div class="stat-card"><strong>${summary.total}</strong><span>leads visibles</span></div>
-      <div class="stat-card"><strong>${summary.pendingReview}</strong><span>pendientes de revisión</span></div>
-      <div class="stat-card"><strong>${summary.averageScore}</strong><span>score promedio</span></div>
-      <div class="stat-card"><strong>${summary.withoutWebsite}</strong><span>sin sitio web</span></div>
+      <div class="stat-card"><strong>${summary.total}</strong><span>Total</span></div>
+      <div class="stat-card"><strong>${summary.withPhone}</strong><span>Teléfono</span></div>
+      <div class="stat-card"><strong>${summary.withEmail}</strong><span>Con Email</span></div>
+      <div class="stat-card"><strong>${summary.withWebsite}</strong><span>Con Web</span></div>
     </div>
   `
   root.append(hero)
