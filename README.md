@@ -31,6 +31,7 @@ GOOGLE_SHEETS_CSV_URL=https://docs.google.com/spreadsheets/d/.../export?format=c
 \`\`\`
 
 El backend acepta tanto la URL normal de edición/compartido como la URL directa CSV. Si recibe una URL estándar de Google Sheets, la convierte automáticamente a export CSV.
+Si la URL responde HTML en vez de CSV, la API devuelve un error claro para que no se rompa el frontend.
 
 ## Cómo publicar la hoja
 
@@ -85,4 +86,5 @@ Filtros soportados:
 ## Notas
 
 - El webhook actual de Altum sólo responde healthcheck por GET; no devuelve filas.
+- En Vercel, la web usa funciones serverless en `/api/health` y `/api/leads`.
 - Si querés lectura privada sin publicar la hoja, el siguiente paso sería sumar Google Sheets API con credenciales de servicio.

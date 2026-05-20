@@ -42,8 +42,17 @@ async function loadLeads() {
   try {
     const query = buildQuery()
     const response = await fetch(`/api/leads${query ? `?${query}` : ''}`)
-    const data = await response.json()
-    if (!response.ok) throw new Error(data.error || 'No se pudieron cargar los leads')
+    const raw = await response.text()
+    let data = null
+
+    try {
+      data = raw ? JSON.parse(raw) : null
+    } catch {
+      const preview = raw.trim().replace(/\s+/g, ' ').slice(0, 160)
+      throw new Error(preview || 'La API respondió un formato inválido')
+    }
+
+    if (!response.ok) throw new Error(data?.error || 'No se pudieron cargar los leads')
     state.items = data.items || []
     state.summary = data.summary || null
     if (!state.selectedId && state.items.length) {
